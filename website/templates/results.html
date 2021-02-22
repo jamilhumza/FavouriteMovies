@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1 style="text-align: center">Search results</h1>
+<div style="margin-left: 100px" class="row">
+  {% for datas in data['Search'] %}
+
+  <div class="card row align-items-center" style="width: 20rem">
+    <img style="height: 150px; width: 150px;"class="card-img-top img-thumbnail"
+    src={{datas['Poster']}} alt="Card image cap">
+    <div class="card-body">
+      <h5 style="text-align: center" class="card-title">{{datas['Title']}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li style="text-align: center" class="list-group-item">
+        Year: {{datas['Year']}}
+      </li>
+      <li style="text-align: center" class="list-group-item">
+        IMDb ID: {{datas['imdbID']}}
+      </li>
+    </ul>
+    <div class="card-body">
+      <form action="/addtofavourite" method="POST">
+        <div class="form-group">
+          <input type="hidden" class="form-control" id="title" name="title"
+          value={{datas['Title']}} />
+        </div>
+        <div class="form-group">
+          <input type="hidden" class="form-control" id="poster" name="poster"
+          value={{datas['Poster']}} />
+        </div>
+        <div class="form-group">
+          <input type="hidden" class="form-control" id="year" name="year"
+          value={{datas['Year']}} />
+        </div>
+        <div class="form-group">
+          <input type="hidden" class="form-control" id="imdb" name="imdb"
+          value={{datas['imdbID']}} />
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Add to favourites</button>
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

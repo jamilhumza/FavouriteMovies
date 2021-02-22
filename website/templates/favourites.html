@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1 style="text-align: center">Favourites</h1>
+<div style="margin-left: 100px" class="row">
+  {% for movie in user.movies %}
+
+  <div class="card row align-items-center" style="width: 20rem">
+    <img
+      style="height: 150px; width: 150px"
+      class="card-img-top img-thumbnail"
+      src="{{movie.pic}}"
+      alt="Card image cap"
+    />
+    <div class="card-body">
+      <h5 style="text-align: center" class="card-title">{{movie.title}}</h5>
+    </div>
+    <div class="card-body"></div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
